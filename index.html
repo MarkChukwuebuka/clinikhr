@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - Clinikhr Consulting Ltd</title>
+    <meta name="description" content="Clinikhr Consulting Ltd - Strategic People Advisory, Organizational Excellence, and Business Growth solutions for organizations worldwide." />
+    
+    <style>
+        /* CSS Variables for Color Scheme */
+        :root {
+            /* Primary Colors */
+            --primary-teal: #0D7377;
+            --primary-dark-teal: #14485A;
+            --primary-light-teal: #32E0C4;
+            
+            /* Accent Colors */
+            --accent-coral: #FF6B6B;
+            --accent-warm: #FFB84D;
+            --accent-soft-coral: #FF9F9F;
+            
+            /* Neutral Colors */
+            --neutral-cream: #F8F6F4;
+            --neutral-warm-gray: #D4CECE;
+            --neutral-charcoal: #2D3436;
+            --neutral-light: #FEFEFE;
+            
+            /* Text Colors */
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --text-light: #F8F6F4;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--neutral-light);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-dark-teal);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(13, 115, 119, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-light-teal);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+        }
+
+        .cta-button {
+            background-color: var(--accent-coral);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-soft-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark-teal) 0%, var(--primary-teal) 100%);
+            padding: 6rem 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--primary-light-teal);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Mission/Vision Cards */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card h3 {
+            color: var(--primary-light-teal);
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--neutral-cream);
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            color: var(--primary-teal);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark-teal);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--primary-teal);
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-warm);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background-color: white;
+            padding: 5rem 2rem;
+        }
+
+        .values-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background-color: var(--neutral-cream);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent-coral);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(13, 115, 119, 0.15);
+        }
+
+        .value-card h3 {
+            color: var(--primary-dark-teal);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--neutral-cream);
+            padding: 5rem 2rem;
+        }
+
+        .services-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .services-header h5 {
+            color: var(--accent-coral);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(13, 115, 119, 0.1);
+            border-top: 4px solid var(--primary-teal);
+        }
+
+        .service-item h3 {
+            color: var(--primary-dark-teal);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-item p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-list li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-teal);
+            font-weight: bold;
+        }
+
+        /* Clients Section */
+        .clients-section {
+            background-color: white;
+            padding: 5rem 2rem;
+        }
+
+        .clients-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .client-card {
+            background-color: var(--neutral-cream);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(13, 115, 119, 0.1);
+        }
+
+        .client-icon {
+            font-size: 3rem;
+            color: var(--primary-teal);
+            margin-bottom: 1rem;
+        }
+
+        .client-card h4 {
+            color: var(--primary-dark-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Why Choose Section */
+        .why-choose-section {
+            background-color: var(--primary-dark-teal);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .why-choose-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .why-card h3 {
+            color: var(--primary-light-teal);
+            margin-bottom: 1rem;
+        }
+
+        /* Approach Section */
+        .approach-section {
+            background-color: var(--neutral-cream);
+            padding: 5rem 2rem;
+        }
+
+        .approach-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .approach-step {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .approach-step h3 {
+            color: var(--primary-dark-teal);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark-teal);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-light-teal);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: var(--neutral-warm-gray);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--neutral-warm-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-light-teal);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--neutral-warm-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .mission-vision,
+            .stats-grid,
+            .approach-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            /* Mobile Navigation */
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--primary-dark-teal);
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease-in-out;
+                z-index: 999;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+            }
+
+            .header-content > .cta-button {
+                display: none;
+            }
+
+            .mobile-menu-overlay {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">CLINIKHR CONSULTING</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#approach" class="nav-link">Our Approach</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+        <div class="mobile-menu-overlay" id="overlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-tagline">Strategic People Advisory | Organizational Excellence | Business Growth</div>
+            <div class="hero-text">
+                <h1>Building High-Performing Teams and Driving Sustainable Growth</h1>
+                <p>Partnering with organizations to strengthen operational structures, optimize talent, and achieve measurable business impact.</p>
+                <a href="#services" class="cta-button" style="margin-top: 1rem;">Explore Our Services</a>
+            </div>
+            <div class="mission-vision">
+                <div class="card">
+                    <h3>Our Mission</h3>
+                    <p>To deliver strategic, results-driven Human Resources, Training, and Business Advisory solutions that enable organizations to optimize talent, strengthen systems, and achieve sustainable growth.</p>
+                </div>
+                <div class="card">
+                    <h3>Our Vision</h3>
+                    <p>To be a globally respected consulting firm, recognized for shaping resilient organizations through excellence in people management, organizational development, and business strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">2020</div>
+                <div class="stat-label">Year Established</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">Global</div>
+                <div class="stat-label">Reach & Impact</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="section-label">About Clinikhr Consulting</div>
+            <h2>Your Trusted Partner in Organizational Excellence</h2>
+            <div class="about-text">
+                <p>Clinikhr Consulting Ltd is a global Human Resources, Training, and Business Advisory firm partnering with organizations to build high-performing teams, strengthen operational structures, and drive sustainable growth.</p>
+                
+                <p>Established in 2020, Clinikhr was founded on a deep, practical understanding of workforce dynamics and organizational challenges across emerging and established markets. Since inception, the firm has evolved into a trusted advisory partner, supporting businesses through critical growth phases—from early-stage structuring to multi-location workforce management.</p>
+                
+                <p>Our expertise spans the design and implementation of end-to-end HR systems, organizational development frameworks, and capacity-building initiatives that enable businesses to operate efficiently and scale with confidence.</p>
+                
+                <p>At Clinikhr, we recognize that organizational success is driven by the alignment of people, processes, and strategy. We work closely with our clients to deliver tailored, execution-focused solutions that create measurable impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="values-section">
+        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <div class="section-label">Our Core Values</div>
+            <h2>Principles That Guide Our Work</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Excellence</h3>
+                <p>We uphold the highest standards in delivery, execution, and outcomes.</p>
+            </div>
+            <div class="value-card">
+                <h3>Integrity</h3>
+                <p>We operate with professionalism, discretion, and accountability.</p>
+            </div>
+            <div class="value-card">
+                <h3>Strategic Partnership</h3>
+                <p>We engage as long-term partners, not transactional consultants.</p>
+            </div>
+            <div class="value-card">
+                <h3>Impact-Driven</h3>
+                <p>Our focus is on measurable results and sustainable value creation.</p>
+            </div>
+            <div class="value-card">
+                <h3>Adaptability</h3>
+                <p>We design solutions that respond to evolving business environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-header">
+            <h5>Our Service Offerings</h5>
+            <h2>Comprehensive Solutions for Organizational Success</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 1rem;">We design and implement robust frameworks that align workforce capabilities with business objectives.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Human Resources Advisory</h3>
+                <p>Design and implement robust HR frameworks that align workforce capabilities with business objectives.</p>
+                <ul class="service-list">
+                    <li>HR Function Design & Transformation</li>
+                    <li>Talent Acquisition Strategy & Execution</li>
+                    <li>Performance Management Systems</li>
+                    <li>HR Policies, Governance & Compliance</li>
+                    <li>Employee Lifecycle Management</li>
+                    <li>Workforce Planning & Optimization</li>
+                </ul>
+            </div>
+
+            <div class="service-item">
+                <h3>Training & Organizational Development</h3>
+                <p>Strengthen organizational capacity through targeted learning and development interventions.</p>
+                <ul class="service-list">
+                    <li>Leadership & Executive Development</li>
+                    <li>Corporate Training Programs</li>
+                    <li>HR Capability Development</li>
+                    <li>Workforce Skills Enhancement</li>
+                    <li>Onboarding & Integration Programs</li>
+                    <li>Organizational Culture & Change Management</li>
+                </ul>
+            </div>
+
+            <div class="service-item">
+                <h3>Business Advisory & Organizational Structuring</h3>
+                <p>Support organizations in building scalable structures and efficient operational systems.</p>
+                <ul class="service-list">
+                    <li>Business Structuring & Operational Design</li>
+                    <li>Organizational Design & Role Mapping</li>
+                    <li>Process Development & Documentation</li>
+                    <li>Growth Strategy Support</li>
+                    <li>Operational Efficiency & Performance Improvement</li>
+                </ul>
+            </div>
+
+            <div class="service-item">
+                <h3>Talent & Career Solutions</h3>
+                <p>Provide structured career and workforce solutions that enhance talent positioning and readiness.</p>
+                <ul class="service-list">
+                    <li>Executive CV & Profile Development</li>
+                    <li>Career Advisory & Talent Positioning</li>
+                    <li>Workforce Readiness & Employability Support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients-section">
+        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <div class="section-label">Who We Work With</div>
+            <h2>Trusted by Organizations Across Industries</h2>
+        </div>
+        <div class="clients-grid">
+            <div class="client-card">
+                <div class="client-icon">🚀</div>
+                <h4>High-Growth Startups</h4>
+                <p>Scaling enterprises seeking structure and optimization</p>
+            </div>
+            <div class="client-card">
+                <div class="client-icon">🏢</div>
+                <h4>SMEs</h4>
+                <p>Small and medium-sized businesses building operational excellence</p>
+            </div>
+            <div class="client-card">
+                <div class="client-icon">🌐</div>
+                <h4>Corporations</h4>
+                <p>Organizations undergoing transformation or expansion</p>
+            </div>
+            <div class="client-card">
+                <div class="client-icon">🤝</div>
+                <h4>Nonprofits</h4>
+                <p>Development organizations strengthening workforce capacity</p>
+            </div>
+            <div class="client-card">
+                <div class="client-icon">🎓</div>
+                <h4>Institutions</h4>
+                <p>Organizations seeking to enhance performance and capability</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose-section">
+        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <h2 style="color: white;">Why Clinikhr Consulting Ltd</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem;">What sets us apart as your strategic partner</p>
+        </div>
+        <div class="why-choose-grid">
+            <div class="why-card">
+                <h3>Execution-Focused Approach</h3>
+                <p>We move beyond strategy into implementation, ensuring tangible results.</p>
+            </div>
+            <div class="why-card">
+                <h3>Cross-Market Expertise</h3>
+                <p>Experience supporting diverse organizational structures and multi-location teams.</p>
+            </div>
+            <div class="why-card">
+                <h3>Tailored Engagements</h3>
+                <p>Solutions designed to align with each client's operational reality and growth stage.</p>
+            </div>
+            <div class="why-card">
+                <h3>Strong HR & Business Integration</h3>
+                <p>Bridging people strategy with business performance for holistic impact.</p>
+            </div>
+            <div class="why-card">
+                <h3>Commitment to Excellence</h3>
+                <p>Delivering consistent, high-quality outcomes across all engagements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach-section" id="approach">
+        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <div class="section-label">Our Approach</div>
+            <h2>Structured, Collaborative, and Results-Oriented</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 1rem;">A proven methodology that delivers sustainable impact</p>
+        </div>
+        <div class="approach-grid">
+            <div class="approach-step">
+                <div class="step-number">1</div>
+                <h3>Assessment</h3>
+                <p>In-depth analysis of current structures, systems, and gaps</p>
+            </div>
+            <div class="approach-step">
+                <div class="step-number">2</div>
+                <h3>Design</h3>
+                <p>Development of tailored, practical solutions aligned with business objectives</p>
+            </div>
+            <div class="approach-step">
+                <div class="step-number">3</div>
+                <h3>Implementation</h3>
+                <p>Hands-on execution and integration into existing operations</p>
+            </div>
+            <div class="approach-step">
+                <div class="step-number">4</div>
+                <h3>Optimization</h3>
+                <p>Continuous improvement to ensure sustainability and performance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section style="background-color: var(--primary-teal); padding: 5rem 2rem; text-align: center; color: white;" id="contact">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="color: white; margin-bottom: 1rem;">Ready to Transform Your Organization?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9);">Let's discuss how we can support your business goals and drive sustainable growth.</p>
+            <a href="mailto:info@clinikhr.com" class="cta-button" style="font-size: 1.1rem; padding: 1rem 2rem;">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">CLINIKHR CONSULTING</div>
+                <p>Strategic People Advisory | Organizational Excellence | Business Growth</p>
+                <p>Partnering with organizations worldwide to build high-performing teams and drive sustainable growth.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#services">HR Advisory</a></li>
+                    <li><a href="#services">Training & Development</a></li>
+                    <li><a href="#services">Business Advisory</a></li>
+                    <li><a href="#services">Talent Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p>Email: info@clinikhr.com</p>
+                <p>Phone: +234 XXX XXX XXXX</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" style="display: inline-block; margin-right: 1rem;">LinkedIn</a>
+                    <a href="#" style="display: inline-block; margin-right: 1rem;">Twitter</a>
+                    <a href="#" style="display: inline-block;">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Clinikhr Consulting Ltd. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a> | <a href="#" style="color: inherit;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        // Get elements
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        const overlay = document.getElementById('overlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Toggle menu function
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (nav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close menu function
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Close menu when clicking on nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Add a small delay to allow smooth scrolling
+                setTimeout(closeMenu, 300);
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
