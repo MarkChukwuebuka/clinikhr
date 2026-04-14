@@ -11,6 +11,7 @@
         :root {
             /* Primary Colors */
             --primary-teal: #0D7377;
+            --primary-blue: #005F73;
             --primary-dark-teal: #14485A;
             --primary-light-teal: #32E0C4;
             
@@ -47,7 +48,8 @@
 
         /* Header Styles */
         header {
-            background-color: var(--primary-dark-teal);
+            /* background-color: var(--primary-blue); */
+            background-color: white;
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -613,13 +615,72 @@
                 display: block;
             }
         }
+
+        /* Clients Logos Section */
+        .clients-logos-section {
+            background-color: var(--neutral-light);
+            padding: 5rem 2rem;
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .clients-logos-container {
+            display: flex;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .clients-logos-wrapper {
+            display: flex;
+            gap: 2rem;
+            animation: scrollLogos 20s linear infinite;
+            flex-shrink: 0;
+        }
+
+        .client-logo {
+            text-align: center;
+            min-width: 150px;
+            flex-shrink: 0;
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .client-logo img:hover {
+            transform: scale(1.1);
+            /* Pause animation on hover (optional) */
+        }
+
+        .clients-logos-section:hover .clients-logos-wrapper {
+            animation-play-state: paused; /* Optional: pause on hover */
+        }
+
+        .client-name {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo">CLINIKHR CONSULTING</div>
+            <div class="logo">
+                <img src="logo.png" height="50" width="200" alt="ClinikHR Consulting Logo">
+            </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -668,12 +729,12 @@
                 <div class="stat-label">Year Established</div>
             </div>
             <div class="stat">
-                <div class="stat-number">Global</div>
-                <div class="stat-label">Reach & Impact</div>
+                <div class="stat-number">+5</div>
+                <div class="stat-label">Employees</div>
             </div>
             <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Client Satisfaction</div>
+                <div class="stat-number">+50</div>
+                <div class="stat-label">Happy Clients</div>
             </div>
         </div>
     </section>
@@ -818,6 +879,109 @@
         </div>
     </section>
 
+
+    <!-- Clients Logos Section -->
+    <section class="clients-logos-section">
+        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+            <div class="section-label">Our Trusted Clients</div>
+            <h2>Companies That Trust Us</h2>
+        </div>
+        
+        <div class="clients-logos-container">
+            <!-- First set of logos -->
+            <div class="clients-logos-wrapper">
+                <div class="client-logo">
+                    <img src="clients/sugar_instincts.jpg" alt="Sugar Instinct Cakes Logo" width="150" height="150">
+                    <p class="client-name">Sugar Instinct Cakes</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/beviks.png" alt="Beviks Realty Logo" width="150" height="150">
+                    <p class="client-name">Beviks Realty</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/house-of-gold.jpeg" alt="House of Gold Foundation Logo" width="150" height="150">
+                    <p class="client-name">House of Gold Foundation</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/homland.jpeg" alt="Homland Ivy Homes Ltd Logo" width="150" height="150">
+                    <p class="client-name">Homland Ivy Homes Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/tibro.png" alt="Tibro Global Ltd Logo" width="150" height="150">
+                    <p class="client-name">Tibro Global Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/brooksfield.webp" alt="Brooksfield Capital Logo" width="150" height="150">
+                    <p class="client-name">Brooksfield Capital</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/fjpay.jpeg" alt="FJPay Logo" width="150" height="150">
+                    <p class="client-name">FJPay</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/empower-her.jpeg" alt="EmpowerHerTech Foundation Logo" width="150" height="150">
+                    <p class="client-name">EmpowerHerTech Foundation</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/onapers.jpeg" alt="Onapers Real Estate Ltd Logo" width="150" height="150">
+                    <p class="client-name">Onapers Real Estate Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/core_outreach.png" alt="CORE Outreach Logo" width="150" height="150">
+                    <p class="client-name">CORE Outreach</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/Starzij.webp" alt="Starzij Properties Logo" width="150" height="150">
+                    <p class="client-name">Starzij Properties</p>
+                </div>
+            </div>
+            
+            <!-- Duplicate set for seamless loop -->
+            <div class="clients-logos-wrapper">
+                <div class="client-logo">
+                    <img src="clients/sugar_instincts.jpg" alt="Sugar Instinct Cakes Logo" width="150" height="150">
+                    <p class="client-name">Sugar Instinct Cakes</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/beviks.png" alt="Beviks Realty Logo" width="150" height="150">
+                    <p class="client-name">Beviks Realty</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/house-of-gold.jpeg" alt="House of Gold Foundation Logo" width="150" height="150">
+                    <p class="client-name">House of Gold Foundation</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/homland.jpeg" alt="Homland Ivy Homes Ltd Logo" width="150" height="150">
+                    <p class="client-name">Homland Ivy Homes Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/tibro.png" alt="Tibro Global Ltd Logo" width="150" height="150">
+                    <p class="client-name">Tibro Global Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/brooksfield.webp" alt="Brooksfield Capital Logo" width="150" height="150">
+                    <p class="client-name">Brooksfield Capital</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/fjpay.jpeg" alt="FJPay Logo" width="150" height="150">
+                    <p class="client-name">FJPay</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/empower-her.jpeg" alt="EmpowerHerTech Foundation Logo" width="150" height="150">
+                    <p class="client-name">EmpowerHerTech Foundation</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/onapers.jpeg" alt="Onapers Real Estate Ltd Logo" width="150" height="150">
+                    <p class="client-name">Onapers Real Estate Ltd</p>
+                </div>
+                <div class="client-logo">
+                    <img src="clients/Starzij.webp" alt="Starzij Properties Logo" width="150" height="150">
+                    <p class="client-name">Starzij Properties</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Section -->
     <section class="why-choose-section">
         <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
@@ -892,7 +1056,9 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <div class="logo" style="margin-bottom: 1rem;">CLINIKHR CONSULTING</div>
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <img src="logo.png" height="50" width="200" alt="ClinikHR Consulting Logo">
+                </div>
                 <p>Strategic People Advisory | Organizational Excellence | Business Growth</p>
                 <p>Partnering with organizations worldwide to build high-performing teams and drive sustainable growth.</p>
             </div>
@@ -916,7 +1082,7 @@
             </div>
             <div class="footer-section">
                 <h3>Connect</h3>
-                <p>Email: info@clinikhr.com</p>
+                <p>Email: clinikhr@gmaail.org</p>
                 <p>Phone: +234 XXX XXX XXXX</p>
                 <div style="margin-top: 1rem;">
                     <a href="#" style="display: inline-block; margin-right: 1rem;">LinkedIn</a>
