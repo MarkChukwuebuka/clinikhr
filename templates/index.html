@@ -329,58 +329,81 @@
         }
 
 
-        /* Team Section */
-        .team-section {
-            background-color: white;
-            padding: 5rem 2rem;
-        }
- 
-        .team-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
- 
-        .team-member {
-            text-align: center;
-            transition: transform 0.3s;
-        }
- 
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
- 
-        .team-member-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1.5rem;
-            border: 5px solid var(--neutral-cream);
-            box-shadow: 0 4px 15px rgba(13, 115, 119, 0.2);
-            transition: all 0.3s;
-        }
- 
-        .team-member:hover .team-member-image {
-            border-color: var(--primary-vivid-blue);
-            box-shadow: 0 8px 25px rgba(2, 81, 193, 0.3);
-        }
- 
-        .team-member-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-vivid-blue);
-            margin-bottom: 0.5rem;
-        }
- 
-        .team-member-position {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+        
+
+
+        
+     /* Team Section */
+.team-section {
+    background-color: white;
+    padding: 5rem 2rem;
+}
+
+.team-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default grid layout with 3 columns */
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+/* CEO - Spans the entire first row */
+.team-member.ceo {
+    grid-column: span 3; /* Spans the full width of the grid (3 columns) */
+    text-align: center;
+}
+
+/* Team Members */
+.team-member {
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    border: 5px solid var(--neutral-cream);
+    box-shadow: 0 4px 15px rgba(13, 115, 119, 0.2);
+    transition: all 0.3s;
+}
+
+.team-member:hover .team-member-image {
+    border-color: var(--primary-vivid-blue);
+    box-shadow: 0 8px 25px rgba(2, 81, 193, 0.3);
+}
+
+.team-member-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-vivid-blue);
+    margin-bottom: 0.5rem;
+}
+
+.team-member-position {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Stacks the team members in one column for smaller screens */
+    }
+
+    .team-member.ceo {
+        grid-column: span 1; /* Makes the CEO member span only 1 column on smaller screens */
+    }
+}
+
 
 
         /* Services Section */
@@ -848,52 +871,49 @@
     </section>
 
 
-
-
-    <!-- Team Section -->
-    <section class="team-section" id="team">
-        <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
-            <div class="section-label">Meet Our Team</div>
-            <h2>Expert Professionals Driving Your Success</h2>
-            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 1rem;">Our diverse team brings decades of combined experience in HR, organizational development, and business strategy.</p>
+<!-- Team Section -->
+<section class="team-section" id="team">
+    <div style="text-align: center; margin-bottom: 3rem; max-width: 1400px; margin-left: auto; margin-right: auto;">
+        <div class="section-label">Meet Our Team</div>
+        <h2>Expert Professionals Driving Your Success</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-top: 1rem;">Our diverse team brings decades of combined experience in HR, organizational development, and business strategy.</p>
+    </div>
+    <div class="team-grid">
+        <!-- CEO - Spans full width of the first row -->
+        <div class="team-member ceo">
+            <img src="{% static 'team/caleb.jpeg' %}" alt="Team Member 3" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Chia Terkuma</h3>
+            <p class="team-member-position">Chief Executive Officer</p>
         </div>
-        <div class="team-grid">
-            <div class="team-member">
-                <img src="{% static 'team/jerry.jpg' %}" alt="Team Member 1" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Ugochukwu Jerry</h3>
-                <p class="team-member-position">Design Executive</p>
-            </div>
-            <div class="team-member">
-                <img src="{% static 'team/david.jpg' %}" alt="Team Member 2" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Abuul David</h3>
-                <p class="team-member-position">Business Development Executive</p>
-            </div>
-            <div class="team-member">
-                <img src="{% static 'team/caleb.jpeg' %}" alt="Team Member 3" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Chia Terkuma</h3>
-                <p class="team-member-position">Chief Executive Officer</p>
-            </div>
-            <div class="team-member">
-                <img src="{% static 'team/mark.jpg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Okonedah Mark</h3>
-                <p class="team-member-position">IT Executive</p>
-            </div>
-            <div class="team-member">
-                <img src="{% static 'team/juliet.jpg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Aransiola Juliet</h3>
-                <p class="team-member-position">Recruitment Lead</p>
-            </div>
-            <div class="team-member">
-                <img src="{% static 'team/kamo.jpeg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
-                <h3 class="team-member-name">Kamo Sende</h3>
-                <p class="team-member-position">Legal Advisor</p>
-            </div>
+
+        <!-- Other Team Members -->
+        <div class="team-member">
+            <img src="{% static 'team/jerry.jpg' %}" alt="Team Member 1" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Ugochukwu Jerry</h3>
+            <p class="team-member-position">Design Executive</p>
         </div>
-    </section>
-
-
-
-
+        <div class="team-member">
+            <img src="{% static 'team/david.jpg' %}" alt="Team Member 2" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Abuul David</h3>
+            <p class="team-member-position">Business Development Executive</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'team/mark.jpg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Okonedah Mark</h3>
+            <p class="team-member-position">IT Executive</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'team/juliet.jpg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Aransiola Juliet</h3>
+            <p class="team-member-position">Recruitment Lead</p>
+        </div>
+        <div class="team-member">
+            <img src="{% static 'team/kamo.jpeg' %}" alt="Team Member 4" class="team-member-image" width="100" height="150">
+            <h3 class="team-member-name">Kamo Sende</h3>
+            <p class="team-member-position">Legal Advisor</p>
+        </div>
+    </div>
+</section>
 
 
     <!-- Services Section -->
